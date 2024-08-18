@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    var service = DataService()
+    
     @State var query: String = ""
     
     var body: some View {
@@ -23,6 +25,9 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
         }
         .padding()
+        .task {
+            await service.businessSearch()
+        }
     }
 }
 
