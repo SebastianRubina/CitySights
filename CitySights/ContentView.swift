@@ -43,7 +43,7 @@ struct ContentView: View {
                             
                             Spacer()
                             
-                            Image("regular_\(round((business.rating ?? 0) * 2) / 2)")
+                            Image(ImageHelper.getRatingImageName(rating: business.rating ?? 0))
                         }
                         
                         Divider()
