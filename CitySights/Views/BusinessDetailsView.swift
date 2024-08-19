@@ -91,5 +91,11 @@ struct BusinessDetailsView: View {
 }
 
 #Preview {
+    @Previewable @State var businessViewModel = BusinessViewModel()
     BusinessDetailsView()
+        .task {
+            await businessViewModel.getBusinesses()
+            businessViewModel.selectedBusiness = businessViewModel.businesses.first
+        }
+        .environment(businessViewModel)
 }
