@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct BusinessDetailsView: View {
-    var business: Business?
-    
+    @Environment(BusinessViewModel.self) private var businessViewModel
+
     var body: some View {
+        let business = businessViewModel.selectedBusiness
         VStack(spacing: 0) {
             ZStack(alignment: .trailing) {
                 Image("detail-placeholder-image")
@@ -39,19 +40,19 @@ struct BusinessDetailsView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(business?.name ?? "Business Name")
-                        .font(.title)
-                        .bold()
-                        .padding(.vertical, 10)
-                    
-                    Text("\(business?.location?.address1 ?? "Address"), \(business?.location?.city ?? "City")")
-                    Text("\(business?.location?.state ?? "ST"), \(business?.location?.zipCode ?? "ZIPCODE"), \(business?.location?.country ?? "Country")")
-                    
-                    Image(ImageHelper.getRatingImageName(rating: business?.rating ?? 0))
-                        .padding(.top, 10)
-                    
-                    Divider()
-                        .padding(.vertical, 16)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(business?.name ?? "Business Name")
+                            .font(.title)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        Text("\(business?.location?.address1 ?? "Address"), \(business?.location?.city ?? "City")")
+                        Text("\(business?.location?.state ?? "ST"), \(business?.location?.zipCode ?? "ZIPCODE"), \(business?.location?.country ?? "Country")")
+                        
+                        Image(ImageHelper.getRatingImageName(rating: business?.rating ?? 0))
+                            .padding(.top, 10)
+                    }
+                    .padding(.vertical, 36)
                     
                     VStack(spacing: 12) {
                         HStack {
