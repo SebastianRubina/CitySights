@@ -21,7 +21,7 @@ struct HomeView: View {
                 Button {
                     // TODO: Implement Query
                 } label: {
-                    Text("Go")
+                    Text("Search")
                 }
                 .buttonStyle(.borderedProminent)
             }
