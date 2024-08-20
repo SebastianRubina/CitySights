@@ -47,7 +47,7 @@ struct HomeView: View {
         }
         .task {
             await businessViewModel.getBusinesses()
-        }
+        }   
         .sheet(item: $businessViewModel.selectedBusiness) { _ in
             BusinessDetailsView()
         }
